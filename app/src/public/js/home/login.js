@@ -18,4 +18,14 @@ function login() {
         psword: psword.value,
     };
     console.log(req);
+    console.log(JSON.stringify(req));
+
+    // server로 json 데이터를 보내는 형식
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(req), // JSON화 시키는 함수
+    });
 }

@@ -30,5 +30,17 @@ function login() {
     })
         .then((res) => res.json())
         // .then((res) => console.log(res)); // 데이터를 가져오는 then 함수
-        .then(console.log); // 간추려서 사용도 가능
+        // .then((console.log)); // 간추려서 사용도 가능
+        .then((res) => {
+            if (res.success) {
+                location.href = '/'; //루트로 이동
+                // console.log(location.href);
+            } else {
+                alert(res.msg);
+            }
+        })
+        .catch((err) => {
+            console.error(new Error('로그인 중 에러 발생'));
+            console.error('로그인 중 에러 발생'); // 둘다 사용 가능
+        });
 }

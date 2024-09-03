@@ -27,5 +27,8 @@ function login() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(req), // JSON화 시키는 함수
-    });
+    })
+        .then((res) => res.json())
+        // .then((res) => console.log(res)); // 데이터를 가져오는 then 함수
+        .then(console.log); // 간추려서 사용도 가능
 }

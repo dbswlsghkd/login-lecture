@@ -1,5 +1,7 @@
 'use strict';
 
+const UserStorage = require('../../models/UserStorage');
+
 const output = {
     // 렌더링 해주는 함수
     home: (req, res) => {
@@ -11,32 +13,28 @@ const output = {
     },
 };
 
-const users = {
-    id: ['hyj', '개발자1', '개발자2'],
-    psword: ['1234', '456', '789'],
-};
-
 const process = {
     // 렌더링 해주는 함수
     login: (req, res) => {
         const id = req.body.id,
             psword = req.body.psword;
 
-        console.log(id, psword);
+        // const userStorage = new UserStorage();
+        // 특정 데이터만 불러올 수 있음
+        const users = UserStorage.getUsers('id', 'psword');
 
+        // console.log(users.psword);
+        const response = {};
         if (users.id.includes(id)) {
             const idx = users.id.indexOf(id);
             if (users.psword[idx] === psword) {
-                return res.json({
-                    success: true,
-                });
+                response.success = true;
+                return res.json(response);
             }
         }
-
-        return res.json({
-            success: false,
-            msg: '로그인에 실패하셨습니다.',
-        });
+        response.success = false;
+        response.msg = '로그인에 실패하셨습니다.';
+        return res.json(response);
     },
 };
 

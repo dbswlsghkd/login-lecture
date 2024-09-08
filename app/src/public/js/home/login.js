@@ -17,8 +17,8 @@ function login() {
         id: id.value,
         psword: psword.value,
     };
-    console.log(req);
-    console.log(JSON.stringify(req));
+    // console.log(req);
+    // console.log(JSON.stringify(req));
 
     // server로 json 데이터를 보내는 형식
     fetch('/login', {
@@ -32,15 +32,15 @@ function login() {
         // .then((res) => console.log(res)); // 데이터를 가져오는 then 함수
         // .then((console.log)); // 간추려서 사용도 가능
         .then((res) => {
+            console.log(res, 'res');
             if (res.success) {
                 location.href = '/'; //루트로 이동
-                // console.log(location.href);
             } else {
                 alert(res.msg);
             }
         })
         .catch((err) => {
-            console.error(new Error('로그인 중 에러 발생'));
+            // console.error(new Error('로그인 중 에러 발생'));
             console.error('로그인 중 에러 발생'); // 둘다 사용 가능
         });
 }

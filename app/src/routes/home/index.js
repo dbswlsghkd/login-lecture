@@ -10,6 +10,7 @@ router.get('/login', ctrl.output.login);
 router.get('/register', ctrl.output.register);
 
 router.post('/login', ctrl.process.login);
+router.post('/register', ctrl.process.register);
 
 // 외부에서 접근 가능하도록 사용하는 구문
 module.exports = router;

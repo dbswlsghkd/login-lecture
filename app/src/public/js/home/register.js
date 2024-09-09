@@ -16,11 +16,16 @@ console.log('hello register');
 registerBtn.addEventListener('click', register);
 
 function register() {
+    if (!id.value) return alert('아이디를 입력해주십시오');
+    if (psword !== confirmPsword) {
+        return alert('비밀번호가 일치하지 않습니다.');
+    }
+
     const req = {
         id: id.value,
         name: name.value,
         psword: psword.value,
-        confirmPsword: confirmPsword.value,
+        // confirmPsword: confirmPsword.value,
     };
     // console.log(req);
     // console.log(JSON.stringify(req));
@@ -38,7 +43,7 @@ function register() {
         // .then((console.log)); // 간추려서 사용도 가능
         .then((res) => {
             if (res.success) {
-                location.href = '/'; //루트로 이동
+                location.href = '/login'; //루트로 이동
             } else {
                 alert(res.msg);
             }

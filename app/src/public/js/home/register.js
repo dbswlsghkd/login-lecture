@@ -1,27 +1,32 @@
 'use strict';
 
 const id = document.querySelector('#id'),
+    name = document.querySelector('#name'),
     psword = document.querySelector('#psword'),
-    loginBtn = document.querySelector('#button');
+    confirmPsword = document.querySelector('#confirm-psword'),
+    registerBtn = document.querySelector('#button');
 
-// console.log(id, psword, loginBtn);
+console.log('hello register');
+// console.log(id, psword, registerBtn);
 
-// const login = () => {
+// const register = () => {
 //     console.log('bye');
 // };
 
-loginBtn.addEventListener('click', login);
+registerBtn.addEventListener('click', register);
 
-function login() {
+function register() {
     const req = {
         id: id.value,
+        name: name.value,
         psword: psword.value,
+        confirmPsword: confirmPsword.value,
     };
     // console.log(req);
     // console.log(JSON.stringify(req));
 
     // server로 json 데이터를 보내는 형식
-    fetch('/login', {
+    fetch('/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +37,6 @@ function login() {
         // .then((res) => console.log(res)); // 데이터를 가져오는 then 함수
         // .then((console.log)); // 간추려서 사용도 가능
         .then((res) => {
-            console.log(res, 'res');
             if (res.success) {
                 location.href = '/'; //루트로 이동
             } else {
@@ -41,6 +45,6 @@ function login() {
         })
         .catch((err) => {
             // console.error(new Error('로그인 중 에러 발생'));
-            console.error('로그인 중 에러 발생'); // 둘다 사용 가능
+            console.error('회원가입 중 에러 발생'); // 둘다 사용 가능
         });
 }

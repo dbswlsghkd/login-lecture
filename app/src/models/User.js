@@ -1,5 +1,5 @@
 'use strict';
-
+const { response } = require('express');
 const UserStorage = require('./UserStorage');
 
 class User {
@@ -7,11 +7,14 @@ class User {
         this.body = body;
     }
 
-    login() {
+    // 비동기 함수
+    async login() {
         // object로 바로 받을 수 있음
         // const { id, psword } = UserStorage.getUsers('id', 'psword');
         const client = this.body;
-        const { id, psword } = UserStorage.getUserInfo(client.id);
+        // await 은 async 함수 안에서 사용 가능
+        const { id, psword } = await UserStorage.getUserInfo(client.id);
+        // console.log(await UserStorage.getUserInfo(client.id), 'User.js');
         // console.log(tmp);
 
         if (id) {

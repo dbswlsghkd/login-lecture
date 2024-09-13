@@ -32,7 +32,7 @@ function login() {
         // .then((res) => console.log(res)); // 데이터를 가져오는 then 함수
         // .then((console.log)); // 간추려서 사용도 가능
         .then((res) => {
-            console.log(res, 'res');
+            // console.log(res, 'res');
             if (res.success) {
                 location.href = '/'; //루트로 이동
             } else {

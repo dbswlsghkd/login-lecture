@@ -19,9 +19,9 @@ const output = {
 
 const process = {
     // 렌더링 해주는 함수
-    login: (req, res) => {
+    login: async (req, res) => {
         const user = new User(req.body);
-        const response = user.login();
+        const response = await user.login();
         return res.json(response);
         // const id = req.body.id,
         //     psword = req.body.psword;

@@ -26,10 +26,15 @@ class User {
         return { success: false, msg: '존재하지 않는 아이디입니다.' };
     }
 
-    register() {
+    async register() {
         const client = this.body;
-        const response = UserStorage.save(client);
-        return response;
+        // 데이터 저장시 시간이 오래 걸릴 수 있기 때문에 await 걸어둠
+        try {
+            const response = await UserStorage.save(client);
+            return response;
+        } catch (err) {
+            return { success: false, msg: err };
+        }
     }
 }
 

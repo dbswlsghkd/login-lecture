@@ -3,10 +3,10 @@ const sql = require('mssql');
 
 // SQL 접속 설정
 const pool = new sql.ConnectionPool({
-    user: 'home', // DB 사용자 이름
-    password: '1234', // DB 사용자의 암호
-    server: 'localhost', // DB 서버 주소, localhost : 로컬호스트
-    database: 'login_lecture', // DB의 데이터베이스 이름
+    user: process.env.DB_USER, // DB 사용자 이름
+    password: process.env.DB_PSWORD, // DB 사용자의 암호
+    server: process.env.DB_HOST, // DB 서버 주소, localhost : 로컬호스트
+    database: process.env.DB_DATABASE, // DB의 데이터베이스 이름
     options: {
         encrypt: false, // DB 서버 주소가 IP일 경우 에러 방지
         trustServerCertificate: true, // 자체 신뢰 서버 인증

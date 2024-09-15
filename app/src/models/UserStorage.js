@@ -1,7 +1,6 @@
 'use strict';
 
-// fs 모듈 가져오기, promises 비동기 처리에 아주 효과적
-const fs = require('fs').promises;
+const db = require('../config/db');
 
 class UserStorage {
     // 은닉화 함수
@@ -35,49 +34,21 @@ class UserStorage {
 
     // 데이터를 은닉화하여 메소드로 전달하였음
     // ...fields는 함수에서 선언한 값만 들고 올 수있도록 설정 -> [ 'id', 'psword' ]
-    static getUsers(isAll, ...fields) {
-        return (
-            fs
-                .readFile('./src/databases/users.json')
-                // 성공 시
-                .then((data) => {
-                    return this.#getUsers(data, isAll, fields);
-                })
-                // 에러 시
-                .catch(console.error)
-        );
-    }
+    static getUsers(isAll, ...fields) {}
 
     static getUserInfo(id) {
-        // const users = this.#users;
-        // promise에 접근을 하면 then() 이라는 함수 사용 가능
-        return (
-            fs
-                .readFile('./src/databases/users.json')
-                // 성공 시
-                .then((data) => {
-                    return this.#getUserInfo(data, id);
-                })
-                // 에러 시
-                .catch(console.error)
-        );
+        // Promise 시간이 오래걸릴 때 사용하는 구문
+        return new Promise((resolve, reject) => {
+            db.request()
+                .input('id', id)
+                .query('select * from users where id = @id', (err, data) => {
+                    if (err) reject(err);
+                    resolve(data[0]);
+                });
+        });
     }
 
-    static async save(userInfo) {
-        const users = await this.getUsers(true);
-        // 모든 값을 다 가져오겠다
-        // console.log(users, 'users');
-
-        if (users.id.includes(userInfo.id)) {
-            throw '이미 존재하는 아이디입니다.';
-        }
-        users.id.push(userInfo.id);
-        users.name.push(userInfo.name);
-        users.psword.push(userInfo.psword);
-        // 데이터 추가
-        fs.writeFile('./src/databases/users.json', JSON.stringify(users));
-        return { success: true };
-    }
+    static async save(userInfo) {}
 }
 
 module.exports = UserStorage;

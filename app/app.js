@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const app = express();
 dotenv.config();
 
+// morgan
 const accessLogStream = require('./src/config/log');
 // 라우팅
 const home = require('./src/routes/home');

@@ -12,22 +12,22 @@ class User {
         // object로 바로 받을 수 있음
         // const { id, psword } = UserStorage.getUsers('id', 'psword');
         const client = this.body;
-        // try {
-        // await 은 async 함수 안에서 사용 가능
-        const { id, psword } = await UserStorage.getUserInfo(client.id);
-        // console.log(await UserStorage.getUserInfo(client.id), 'User.js');
-        // console.log(tmp);
-        if (id) {
-            if (id === client.id && psword === client.psword) {
-                return { success: true };
+        try {
+            // await 은 async 함수 안에서 사용 가능
+            const { id, psword } = await UserStorage.getUserInfo(client.id);
+            // console.log(await UserStorage.getUserInfo(client.id), 'User.js');
+            // console.log(tmp);
+            if (id) {
+                if (id === client.id && psword === client.psword) {
+                    return { success: true };
+                }
+                return { success: false, msg: '비밀번호가 틀렸습니다.' };
             }
-            return { success: false, msg: '비밀번호가 틀렸습니다.' };
+            return { success: false, msg: '존재하지 않는 아이디입니다.' };
+        } catch (err) {
+            // key 와 value가 같으면 key만 입력해도 됨
+            return { success: false, err };
         }
-        return { success: false, msg: '존재하지 않는 아이디입니다.' };
-        // } catch (err) {
-        //     console.log('에러?');
-        //     return { success: false, msg: `${err}` };
-        // }
     }
 
     async register() {
@@ -37,7 +37,7 @@ class User {
             const response = await UserStorage.save(client);
             return response;
         } catch (err) {
-            return { success: false, msg: err };
+            return { success: false, err };
         }
     }
 }

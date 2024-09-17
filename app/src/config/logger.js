@@ -42,4 +42,9 @@ if (process.env.NODE_ENV !== 'production') {
     logger.add(opts.console);
 }
 
+// morgan과 winston 모듈 같이 사용
+logger.stream = {
+    write: (message) => logger.info(message),
+};
+
 module.exports = logger;

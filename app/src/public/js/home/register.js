@@ -45,6 +45,7 @@ function register() {
             if (res.success) {
                 location.href = '/login'; //루트로 이동
             } else {
+                if (res.err) return alert(res.err);
                 alert(res.msg);
             }
         })

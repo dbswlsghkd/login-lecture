@@ -11,7 +11,7 @@ class UserStorage {
                 .input('id', id)
                 .query(sql, (err, data) => {
                     if (err) reject(`${err}`);
-                    resolve(data.recordset[0]);
+                    else resolve(data.recordset[0]);
                 });
         });
     }
@@ -26,7 +26,7 @@ class UserStorage {
                 .input('name', userInfo.name)
                 .query(sql, (err) => {
                     if (err) reject(`${err}`);
-                    resolve({ success: true });
+                    else resolve({ success: true });
                 });
         });
     }

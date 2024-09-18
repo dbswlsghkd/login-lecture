@@ -29,7 +29,7 @@ const process = {
         const url = {
             method: 'POST',
             path: '/login',
-            status: response.err ? 400 : 200,
+            status: response.err ? 400 : 201,
         };
         log(response, url);
         return res.status(url.status).json(response);
@@ -57,7 +57,7 @@ const process = {
         const url = {
             method: 'POST',
             path: '/register',
-            status: response.err ? 400 : 200,
+            status: response.err ? 409 : 201,
         };
         log(response, url);
         return res.status(url.status).json(response);

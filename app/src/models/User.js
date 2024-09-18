@@ -14,11 +14,11 @@ class User {
         const client = this.body;
         try {
             // await 은 async 함수 안에서 사용 가능
-            const { id, psword } = await UserStorage.getUserInfo(client.id);
+            const user = await UserStorage.getUserInfo(client.id);
             // console.log(await UserStorage.getUserInfo(client.id), 'User.js');
             // console.log(tmp);
-            if (id) {
-                if (id === client.id && psword === client.psword) {
+            if (user) {
+                if (user.id === client.id && user.psword === client.psword) {
                     return { success: true };
                 }
                 return { success: false, msg: '비밀번호가 틀렸습니다.' };

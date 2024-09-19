@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="/js/home/register.js" defer></script>
+        <!-- <script src="/routes/home/home.ctrl.js" defer></script> -->
         <link rel="stylesheet" href="/css/home/login.css" />
         <title>Document</title>
     </head>
@@ -20,7 +21,15 @@
                     </p>
                 </form> -->
                 <form class="login-form">
-                    <input id="id" type="text" placeholder="아이디" />
+                    <div class="id-check-container">
+                        <input
+                            id="id"
+                            class="register-id"
+                            type="text"
+                            placeholder="아이디"
+                        />
+                        <p id="duplicate-check">중복체크</p>
+                    </div>
                     <input id="name" type="text" placeholder="이름" />
                     <input id="psword" type="password" placeholder="비밀번호" />
                     <input

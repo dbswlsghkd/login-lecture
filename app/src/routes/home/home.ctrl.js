@@ -62,6 +62,21 @@ const process = {
         log(response, url);
         return res.status(url.status).json(response);
     },
+    duplicateChk: async (req, res) => {
+        const user = new User(req.body);
+        const response = await user.duplicateChk();
+        // console.log(response, 'home response');
+
+        const url = {
+            method: 'POST',
+            path: '/idChk',
+            status: response.err ? 409 : 201,
+        };
+        // console.log(response.msg, 'res msg');
+        // console.log(res.json(response), 'res json');
+        log(response, url);
+        return res.json(response);
+    },
 };
 
 // object로 생성

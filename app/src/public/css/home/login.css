@@ -26,6 +26,30 @@
     box-sizing: border-box;
     font-size: 14px;
 }
+
+/* 회원가입 아이디 */
+.form .register-id {
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 70%;
+    border: 0;
+    margin: 14px 0;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.register-id {
+    flex: 1; /* 입력 필드가 가용 공간을 차지하도록 설정 */
+}
+
+.id-check-container {
+    display: flex;
+    align-items: center; /* 아이템들을 수직 가운데 정렬 */
+    gap: 10px; /* 입력 필드와 버튼 사이의 간격 추가 */
+}
+
 .form #button {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
@@ -46,6 +70,28 @@
 .form #button:focus {
     background: #43a047;
 }
+
+.form #duplicate-check {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #c3c5c5;
+    width: 28%;
+    border: 0;
+    /* margin: 0 auto; */
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.form #duplicate-check:hover,
+.form #duplicate-check:active,
+.form #duplicate-check:focus {
+    background: #e7e3e3;
+}
+
 .form .message {
     margin: 15px 0 0;
     color: #b3b3b3;

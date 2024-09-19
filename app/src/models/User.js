@@ -40,6 +40,18 @@ class User {
             return { success: false, err };
         }
     }
+
+    async duplicateChk() {
+        const client = this.body;
+        try {
+            const response = await UserStorage.getDuplicateChk(client.id);
+            console.log(response, 'response');
+            return { msg: response };
+        } catch (err) {
+            console.log(err, 'err');
+            return { success: false, err };
+        }
+    }
 }
 
 module.exports = User;

@@ -30,6 +30,22 @@ class UserStorage {
                 });
         });
     }
+
+    // id 중복체크
+    static getDuplicateChk(id) {
+        // Promise 시간이 오래걸릴 때 사용하는 구문
+        console.log(id);
+        return new Promise((resolve, reject) => {
+            let sql = 'select * from users where id = @id';
+            db.request()
+                .input('id', id)
+                .query(sql, (err, data) => {
+                    if (data.recordset.length === 0)
+                        reject(`사용가능한 아이디입니다.`);
+                    else resolve(`이미 등록된 아이디입니다.`);
+                });
+        });
+    }
 }
 
 module.exports = UserStorage;

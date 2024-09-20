@@ -52,9 +52,7 @@ function register() {
         .then((res) => {
             if (res.success) {
                 location.href = '/login'; //루트로 이동
-                return alert(
-                    '회원가입에 성공했습니다~!, 로그인 페이지로 이동합니다.'
-                );
+                return alert(res.msg);
             } else {
                 if (res.err) return alert(res.err);
                 alert(res.msg);

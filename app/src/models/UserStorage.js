@@ -65,11 +65,20 @@ class UserStorage {
         // Promise 시간이 오래걸릴 때 사용하는 구문
         console.log(id);
         return new Promise((resolve, reject) => {
-            let sql = 'select * from users where id = @id';
+            // let sql = 'select * from users where id = @id';
+            let storedProcedureName = 'up_selectUserInfo';
             db.request()
                 .input('id', id)
-                .query(sql, (err, data) => {
-                    if (data.recordset.length === 0)
+                // .query(sql, (err, data) => {
+                //     if (data.recordset.length === 0)
+                //         reject(`사용가능한 아이디입니다.`);
+                //     else resolve(`이미 등록된 아이디입니다.`);
+                // });
+                // 프로시저 사용방식
+                .execute(storedProcedureName, (err, result) => {
+                    // 프로시저 호출
+                    console.log(result);
+                    if (result.recordset.length === 0)
                         reject(`사용가능한 아이디입니다.`);
                     else resolve(`이미 등록된 아이디입니다.`);
                 });

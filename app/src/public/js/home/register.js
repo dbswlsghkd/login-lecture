@@ -97,3 +97,17 @@ function idChk() {
             console.error('아이디 체크 중 오류 발생'); // 둘다 사용 가능
         });
 }
+
+function onlyEnglishAndNumbers(event) {
+    // 입력된 값을 가져옴
+    const inputValue = event.target.value;
+
+    // 영문자와 숫자만 허용하는 정규 표현식
+    const regex = /^[a-zA-Z0-9]+$/;
+
+    // 입력 값이 정규 표현식과 일치하지 않으면 허용되지 않는 문자를 제거
+    if (!regex.test(inputValue)) {
+        event.target.value = inputValue.replace(/[^a-zA-Z0-9]/g, '');
+        alert('한글, 특수문자는 입력할 수 없습니다.');
+    }
+}

@@ -54,7 +54,7 @@
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4caf50;
+    background: #3b8dbd;
     width: 80%;
     border: 0;
     margin: 0 auto;
@@ -68,7 +68,7 @@
 .form #button:hover,
 .form #button:active,
 .form #button:focus {
-    background: #43a047;
+    background: #3193c8;
 }
 
 .form #duplicate-check {
@@ -98,7 +98,7 @@
     font-size: 12px;
 }
 .form .message a {
-    color: #4caf50;
+    color: #3193c8;
     text-decoration: none;
 }
 .form .register-form {
@@ -139,12 +139,13 @@
     color: #ef3b3a;
 }
 body {
-    background: #76b852; /* fallback for old browsers */
-    background: rgb(141, 194, 111);
+    background: #d1e8ff; /* fallback for old browsers */
+    background: rgb(209, 232, 255);
     background: linear-gradient(
         90deg,
-        rgba(141, 194, 111, 1) 0%,
-        rgba(118, 184, 82, 1) 50%
+        rgba(209, 232, 255, 1) 0%,
+        rgba(125, 202, 255, 1) 50%,
+        rgba(61, 161, 242, 1) 100%
     );
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;

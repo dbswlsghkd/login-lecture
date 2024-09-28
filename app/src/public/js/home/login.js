@@ -1,14 +1,7 @@
 'use strict';
-
 const id = document.querySelector('#id'),
     psword = document.querySelector('#psword'),
     loginBtn = document.querySelector('#button');
-
-// console.log(id, psword, loginBtn);
-
-// const login = () => {
-//     console.log('bye');
-// };
 
 loginBtn.addEventListener('click', login);
 
@@ -33,7 +26,8 @@ function login() {
         },
         body: JSON.stringify(req), // JSON화 시키는 함수
     })
-        .then((res) => res.json())
+        .then((res) => res.json()) // 데이터를 가져오는 then 함수
+        // .then((res) => res.json())
         // .then((res) => console.log(res)); // 데이터를 가져오는 then 함수
         // .then((console.log)); // 간추려서 사용도 가능
         .then((res) => {
